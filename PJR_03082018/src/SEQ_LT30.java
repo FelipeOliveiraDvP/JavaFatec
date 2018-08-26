@@ -40,15 +40,29 @@ public class SEQ_LT30 {
                     // A Logica começa aqui
                     int anos = 0, meses = 0, dias = 0;
                     
-                    while(anoNasc < anoAtual){
-                        // Total de Anos
-                        anos++;
-                        // Total de Meses
-                        
-                        
-                        anoNasc++;
+                    anos = anoAtual - anoNasc;
+                    meses = mesAtual - mesNasc;
+                    
+                    if(meses < 0)
+                    {
+                        anos--;
+                        meses += 12;
                     }
-                    JOptionPane.showMessageDialog(null, "Voce tem "+anos);
+                    
+                    dias = diaAtual - diaNasc;
+                    
+                    if(dias < 0)
+                    {
+                        meses--;
+                        
+                        if(meses < 0)
+                        {
+                            anos--;
+                            meses += 12;
+                        }
+                        dias += totalDiasMes(meses, anos);
+                    }
+                    JOptionPane.showMessageDialog(null, "Voce tem "+anos+" Anos, "+meses+" meses e "+dias+" dias");
                 }
             }
             else
